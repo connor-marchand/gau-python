@@ -20,5 +20,3 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/connor-marchand/gau-python"
 "Bug Tracker" = "https://github.com/connor-marchand/gau-python/issues"
-
-[tool.setuptools_scm]

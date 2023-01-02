@@ -14,7 +14,6 @@ def get_urls_commoncrawl(domain, num_of_api_urls):
         try:
             while True:
                 request_url = api_urls[i] + f'?url={domain}/*&output=json&fl=url&page={str(page)}'
-                print(f'GET: {request_url}')
                 response = requests.get(url=request_url)
                 if response.status_code == 200:
                     for item in response.text.split('\n'):

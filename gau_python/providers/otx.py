@@ -10,7 +10,6 @@ def get_urls_otx(domain):
     try:
         while True:
             request_url = base_url + f'/{domain}/url_list?limit=100&page={str(page)}'
-            print(f'GET: {request_url}')
             response = requests.get(url=request_url)
             response_json = json.loads(response.text)
 

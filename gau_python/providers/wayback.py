@@ -10,7 +10,6 @@ def get_urls_wayback(domain):
     try:
         while True:
             request_url = base_url + f'?url={domain}/*&output=json&collapse=urlkey&fl=original&page={page}'
-            print(f'GET: {request_url}')
             response = requests.get(url=request_url)
             if len(response.text) > 0:
                 response_json = json.loads(response.text)
