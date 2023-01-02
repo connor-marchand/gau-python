@@ -2,7 +2,7 @@ import json
 import requests
 
 
-def get_url_commoncrawl(domain, num_of_api_urls):
+def get_urls_commoncrawl(domain, num_of_api_urls):
     api_urls = get_available_apis()
     urls = []
     page = 1
@@ -20,7 +20,7 @@ def get_url_commoncrawl(domain, num_of_api_urls):
                     for item in response.text.split('\n'):
                         try:
                             item_json = json.loads(item)
-                            urls.append(item_json["url"])
+                            urls.append(str(item_json["url"]))
                         except json.JSONDecodeError:
                             print("JSON Error: Probably trying to decode empty item")
                     page += 1

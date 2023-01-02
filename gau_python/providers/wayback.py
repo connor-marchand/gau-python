@@ -1,11 +1,10 @@
 import json
-
 import requests
 
 base_url = "https://web.archive.org/cdx/search/cdx"
 
 
-def get_url_wayback(domain):
+def get_urls_wayback(domain):
     urls = []
     page = 0
     try:
@@ -16,7 +15,7 @@ def get_url_wayback(domain):
             if len(response.text) > 0:
                 response_json = json.loads(response.text)
                 for url in response_json:
-                    urls.append(url)
+                    urls.append(str(url))
                 page += 1
             else:
                 break

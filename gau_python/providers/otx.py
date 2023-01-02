@@ -1,11 +1,10 @@
 import json
-
 import requests
 
 base_url = 'https://otx.alienvault.com/api/v1/indicators/hostname'
 
 
-def get_url_otx(domain):
+def get_urls_otx(domain):
     urls = []
     page = 1
     try:
@@ -16,7 +15,7 @@ def get_url_otx(domain):
             response_json = json.loads(response.text)
 
             for url_item in response_json["url_list"]:
-                urls.append(url_item["url"])
+                urls.append(str(url_item["url"]))
             if response_json['has_next']:
                 page += 1
             else:
