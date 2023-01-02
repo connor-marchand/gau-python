@@ -1,0 +1,22 @@
+[build-system]
+requires = ["requests", "setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gau-python"
+version = "0.1.1"
+authors = [
+  { name="Connor Marchand", email="connor@connormarchand.com" },
+]
+description = "A python version of https://github.com/lc/gau"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/connor-marchand/gau-python"
+"Bug Tracker" = "https://github.com/connor-marchand/gau-python/issues"
