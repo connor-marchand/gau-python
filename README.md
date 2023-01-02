@@ -6,6 +6,8 @@ This library gets urls from AlienVault's Open Threat Exchange, the Wayback Machi
 pip install gau-python
 ```
 
+https://pypi.org/project/gau-python/
+
 ### Providers
 This library gets urls from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl.
 
