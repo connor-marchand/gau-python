@@ -17,7 +17,6 @@ def get_urls_wayback(domain):
             if len(response.text) > 0:
                 response_json = json.loads(response.text)
                 for url in response_json:
-                    print(str(url[0]))
                     urls.append(str(url[0]))
                 page += 1
             else:
