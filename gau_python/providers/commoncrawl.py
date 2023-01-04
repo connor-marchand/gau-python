@@ -1,4 +1,6 @@
 import json
+import logging
+
 import requests
 
 
@@ -14,6 +16,7 @@ def get_urls_commoncrawl(domain, num_of_api_urls):
         try:
             while True:
                 request_url = api_urls[i] + f'?url={domain}/*&output=json&fl=url&page={str(page)}'
+                logging.info(f'GET {request_url}')
                 response = requests.get(url=request_url)
                 if response.status_code == 200:
                     for item in response.text.split('\n'):
@@ -21,16 +24,16 @@ def get_urls_commoncrawl(domain, num_of_api_urls):
                             item_json = json.loads(item)
                             urls.append(str(item_json["url"]))
                         except json.JSONDecodeError:
-                            print("JSON Error: Probably trying to decode empty item")
+                            logging.warning("JSON Error: Probably trying to decode empty item")
                     page += 1
                 else:
                     break
         except requests.exceptions.Timeout:
-            print("Request Error: Timeout")
+            logging.error("requests.exceptions.Timeout: Timeout")
         except requests.exceptions.TooManyRedirects:
-            print("Request Error: Too many redirects. Try a different URL.")
-        except requests.exceptions.RequestException as e:
-            raise SystemExit(e)
+            logging.error("requests.exceptions.TooManyRedirects: Too many redirects. Try a different URL.")
+        except requests.exceptions.RequestException:
+            logging.error("requests.exceptions.RequestException")
         page = 1
 
     return urls
